@@ -1,0 +1,361 @@
+/* Paolo · Entrenador de porteros. Unico CSS condiviso del sito. */
+
+:root {
+  --azul: #0A2B52;
+  --azul-2: #133b6b;
+  --amarillo: #FFD84D;
+  --texto: #1A2230;
+  --texto-suave: #4a5568;
+  --fondo: #F4F6F9;
+  --blanco: #ffffff;
+  --borde: #dfe4ec;
+  --naranja: #F2913D;
+  --verde: #5FD39A;
+  --radio: 12px;
+  --ancho: 1080px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--texto);
+  background: var(--fondo);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main { flex: 1; }
+
+img, video { max-width: 100%; display: block; }
+
+a { color: var(--azul); }
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .5em; }
+h1 { font-size: 1.7rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.05rem; }
+p { margin: 0 0 1em; }
+
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ---------- Header ---------- */
+
+.cabecera {
+  background: var(--azul);
+  color: var(--blanco);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.cabecera .contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 56px;
+}
+
+.marca {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.marca:hover { color: var(--amarillo); }
+
+/* Menu: <details> senza JS */
+.menu { position: relative; }
+
+.menu > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: .95rem;
+  user-select: none;
+}
+
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::before { content: "☰  "; }
+.menu[open] > summary { background: var(--azul-2); border-color: var(--amarillo); }
+
+.menu ul { list-style: none; margin: 0; padding: 0; }
+
+.menu > ul {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 260px;
+  background: var(--azul);
+  border: 1px solid var(--azul-2);
+  border-radius: 10px;
+  padding: 8px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.menu a, .menu .grupo {
+  display: block;
+  padding: 10px 16px;
+  color: var(--blanco);
+  text-decoration: none;
+}
+
+.menu .grupo {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--amarillo);
+  padding-bottom: 2px;
+}
+
+.menu ul ul a { padding-left: 28px; }
+.menu a:hover, .menu a:focus { background: var(--azul-2); color: var(--amarillo); }
+.menu a[aria-current="page"] { color: var(--amarillo); font-weight: 700; }
+
+/* ---------- Breadcrumb ---------- */
+
+.migas {
+  font-size: .85rem;
+  color: var(--texto-suave);
+  padding: 12px 0 0;
+}
+
+.migas ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.migas li + li::before { content: "›"; margin-right: 4px; color: #9aa5b5; }
+.migas a { color: var(--texto-suave); }
+
+/* ---------- Footer ---------- */
+
+.pie {
+  margin-top: 48px;
+  padding: 20px 0;
+  font-size: .85rem;
+  color: #c9d3e1;
+  background: var(--azul);
+}
+
+/* ---------- Bloques genericos ---------- */
+
+.seccion { padding: 24px 0 8px; }
+
+.bloque {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 20px 16px;
+  margin-bottom: 16px;
+}
+
+.subtitulo { color: var(--texto-suave); margin-top: -.3em; }
+
+.placeholder { background: #fff4c2; padding: 0 3px; border-radius: 3px; }
+
+.cabecera-equipo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+}
+
+.cabecera-equipo img { width: 72px; height: 72px; object-fit: contain; }
+.cabecera-equipo h1 { margin-bottom: .2em; }
+
+/* Lista de informes (pagina equipo) */
+.lista-informes { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+
+.tarjeta-partido {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--texto);
+}
+
+.tarjeta-partido:hover { border-color: var(--azul); }
+.tarjeta-partido img { width: 48px; height: 48px; object-fit: contain; flex: none; }
+.tarjeta-partido .info { flex: 1; min-width: 0; }
+.tarjeta-partido strong { display: block; font-size: 1.05rem; }
+.tarjeta-partido .meta { display: block; font-size: .9rem; color: var(--texto-suave); }
+.tarjeta-partido .info .ir { display: block; margin-top: 2px; }
+.tarjeta-partido .marcador { font-weight: 800; font-size: 1.2rem; color: var(--azul); white-space: nowrap; }
+.tarjeta-partido .ir { font-size: .85rem; color: var(--azul); font-weight: 600; }
+
+/* ---------- Informe: fichas ---------- */
+
+.ficha {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 20px 16px;
+  margin: 16px 0;
+}
+
+.ficha > h2 {
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  font-size: 1.1rem;
+  color: var(--azul);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.etiqueta {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: var(--texto);
+}
+
+.etiqueta.mejorar { background: var(--naranja); }
+.etiqueta.bien { background: var(--verde); }
+.etiqueta.sugerencia { background: var(--amarillo); }
+
+/* Portada */
+.portada {
+  background: var(--azul);
+  color: var(--blanco);
+  border: 0;
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.portada h1 { color: var(--amarillo); letter-spacing: .04em; font-size: 1.6rem; margin-top: 16px; }
+.portada p { margin: 0; color: #dbe4f0; }
+
+.enfrentamiento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.enfrentamiento img { width: 84px; height: 84px; object-fit: contain; }
+.enfrentamiento .vs { font-weight: 800; font-size: 1.1rem; color: var(--amarillo); }
+
+/* Resultado */
+.resultado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.resultado img { width: 64px; height: 64px; object-fit: contain; }
+.resultado .marcador { font-size: 2.4rem; font-weight: 800; color: var(--azul); white-space: nowrap; }
+.resultado-meta { text-align: center; color: var(--texto-suave); margin: 4px 0 0; }
+.resultado-meta strong { color: var(--texto); }
+
+.valoracion {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin: 20px 0;
+  letter-spacing: .02em;
+}
+
+.valoracion .positiva { color: #1f9d63; }
+
+/* Columnas positivo / a mejorar */
+.columnas { display: grid; gap: 12px; }
+
+.columna {
+  border-radius: 10px;
+  padding: 14px 16px;
+  background: var(--fondo);
+  border-left: 5px solid var(--borde);
+}
+
+.columna.positivo { border-left-color: var(--verde); }
+.columna.mejorar { border-left-color: var(--naranja); }
+.columna h3 { margin-bottom: .4em; }
+.columna ul { margin: 0; padding-left: 1.1em; }
+
+/* Goles encajados y lecciones */
+.lista-numerada { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+
+.item-numerado {
+  display: flex;
+  gap: 14px;
+  background: var(--fondo);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.item-numerado .num {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--azul);
+  color: var(--amarillo);
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+.item-numerado h3 { margin-bottom: .25em; }
+.item-numerado p { margin: 0; }
+.item-numerado .meta { font-size: .85rem; font-weight: 700; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .04em; }
+
+/* Media */
+.rejilla { display: grid; gap: 16px; margin-bottom: 16px; }
+
+.media { margin: 0; }
+
+.media video, .media img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: #000;
+}
+
+.media a { display: block; }
+
+.media figcaption { margin-top: 8px; font-size: .92rem; }
+.media figcaption .min { display: block; font-weight: 800; font-size: .78rem; letter-spacing: .06em; color: var(--azul); }
+
+.puntos { margin: 0; padding-left: 1.2em; }
+.puntos li { margin-bottom: .35em; }
+
+.volver { display: inline-block; margin: 8px 0 0; font-weight: 600; }
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 900px) {
+  h1 { font-size: 2rem; }
+  .ficha { padding: 28px; }
+  .portada h1 { font-size: 2.2rem; }
+  .enfrentamiento img { width: 110px; height: 110px; }
+  .columnas { grid-template-columns: 1fr 1fr; }
+  .rejilla.dos { grid-template-columns: 1fr 1fr; }
+  .rejilla.tres { grid-template-columns: 1fr 1fr 1fr; }
+  .lista-numerada.dos { grid-template-columns: 1fr 1fr; }
+  .lista-numerada.tres { grid-template-columns: 1fr 1fr 1fr; }
+}

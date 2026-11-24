@@ -1,0 +1,175 @@
+<!doctype html>
+<!--
+  PLANTILLA DE INFORME DEL PORTERO
+
+  Cómo usarla:
+  1. Copia esta carpeta entera en
+     temporada-AAAA-AA/<equipo>/informes/AAAA-MM-GG-<rival>/
+  2. Crea dentro las carpetas video/ poster/ img/ y pon allí los archivos
+     (nombres minXX.mp4, minXX.jpg; si no es un minuto de juego, clipXX).
+  3. Sustituye todos los textos entre corchetes: [Rival], [dd/mm/aaaa], [__].
+  4. Duplica o borra las fichas y los bloques <figure> según el partido.
+  5. Añade la tarjeta del partido en la página del equipo.
+
+  Las rutas que empiezan por ../../../../ son correctas UNA VEZ COPIADA la
+  carpeta en su sitio (4 niveles por debajo de la raíz). Aquí, en plantillas/,
+  los enlaces y logos no funcionan: es normal.
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informe del portero · [Equipo] vs [Rival] · [dd/mm/aaaa]</title>
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="../../../../index.html">Paolo · Entrenador de porteros</a>
+    <!-- Menú: debe ser igual en todas las páginas (ver CLAUDE.md) -->
+    <details class="menu">
+      <summary>Menú</summary>
+      <ul>
+        <li><a href="../../../../index.html">Inicio</a></li>
+        <li>
+          <span class="grupo">Temporada 2026-27</span>
+          <ul>
+            <li><a href="../../../../temporada-2026-27/apa-poble-sec/index.html">APA Poble Sec · Juvenil A</a></li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+  </div>
+</header>
+
+<main class="contenedor">
+  <nav class="migas" aria-label="Ruta">
+    <ol>
+      <li><a href="../../../../index.html">Inicio</a></li>
+      <li>Temporada [AAAA-AA]</li>
+      <li><a href="../../index.html">[Equipo]</a></li>
+      <li>Informe vs [Rival]</li>
+    </ol>
+  </nav>
+
+  <!-- 1. Portada. Logo del rival: guárdalo en assets/img/logos/<rival>.png -->
+  <section class="ficha portada">
+    <div class="enfrentamiento">
+      <img src="../../../../assets/img/logos/apa-poble-sec.png" alt="Escudo [Equipo]">
+      <span class="vs">vs</span>
+      <img src="../../../../assets/img/logos/[rival].png" alt="Escudo [Rival]">
+    </div>
+    <h1>INFORME DEL PORTERO</h1>
+    <p>[Categoría] · [Equipo] vs [Rival] · [dd/mm/aaaa]</p>
+  </section>
+
+  <!-- 2. Contexto y valoración global -->
+  <section class="ficha">
+    <h2>Contexto y valoración global</h2>
+    <div class="resultado">
+      <img src="../../../../assets/img/logos/apa-poble-sec.png" alt="[Equipo]">
+      <span class="marcador">[__] – [__]</span>
+      <img src="../../../../assets/img/logos/[rival].png" alt="[Rival]">
+    </div>
+    <p class="resultado-meta">Resultado final · [Casa/Fuera] · [dd/mm/aaaa]</p>
+    <p class="resultado-meta"><strong>Goles encajados: [__]</strong></p>
+
+    <!-- Valoración: usa class="positiva" (verde) si es positiva -->
+    <p class="valoracion">VALORACIÓN GLOBAL: <span class="positiva">[__]</span></p>
+
+    <div class="columnas">
+      <div class="columna positivo">
+        <h3>Positivo</h3>
+        <ul>
+          <li>[__]</li>
+          <li>[__]</li>
+        </ul>
+      </div>
+      <div class="columna mejorar">
+        <h3>A mejorar</h3>
+        <ul>
+          <li>[__]</li>
+          <li>[__]</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Goles encajados. Un <li> por gol; borra la sección si no hubo goles. -->
+  <section class="ficha">
+    <h2>Goles encajados</h2>
+    <ol class="lista-numerada tres">
+      <li class="item-numerado">
+        <span class="num">1</span>
+        <div>
+          <span class="meta">MIN [__]</span>
+          <h3>[Tipo de acción]</h3>
+          <p>[Descripción de la situación]</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!--
+    4. FICHA DE SITUACIÓN (ejemplo). Duplica una ficha por cada tema.
+    Etiqueta: elige UNA de
+      <span class="etiqueta mejorar">A MEJORAR</span>
+      <span class="etiqueta bien">BIEN</span>
+      <span class="etiqueta sugerencia">SUGERENCIA</span>
+    Rejilla: class="rejilla" (1 media), "rejilla dos" (2), "rejilla tres" (3 o más).
+  -->
+  <section class="ficha">
+    <h2>[Título de la situación] <span class="etiqueta mejorar">A MEJORAR</span></h2>
+    <div class="rejilla dos">
+
+      <!-- Ejemplo de VÍDEO: video/minXX.mp4 + poster/minXX.jpg -->
+      <figure class="media">
+        <video controls playsinline preload="metadata" poster="poster/minXX.jpg">
+          <source src="video/minXX.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="min">VÍDEO · MIN [__]</span>[Nota]</figcaption>
+      </figure>
+
+      <!-- Ejemplo de IMAGEN: img/minXX.jpg (al tocar se abre a tamaño completo) -->
+      <figure class="media">
+        <a href="img/minXX.jpg"><img loading="lazy" src="img/minXX.jpg" alt="Minuto [__]: [descripción]"></a>
+        <figcaption><span class="min">MIN [__]</span>[Nota]</figcaption>
+      </figure>
+
+    </div>
+    <ul class="puntos">
+      <li>[__]</li>
+    </ul>
+  </section>
+
+  <!-- 5. Lecciones aprendidas. Un <li> por lección. -->
+  <section class="ficha">
+    <h2>Lecciones aprendidas</h2>
+    <ol class="lista-numerada dos">
+      <li class="item-numerado">
+        <span class="num">1</span>
+        <div>
+          <h3>[Tema]</h3>
+          <p>[__]</p>
+        </div>
+      </li>
+      <li class="item-numerado">
+        <span class="num">2</span>
+        <div>
+          <h3>[Tema]</h3>
+          <p>[__]</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <a class="volver" href="../../index.html">← Volver a [Equipo]</a>
+</main>
+
+<footer class="pie">
+  <div class="contenedor">© 2026 Paolo</div>
+</footer>
+
+</body>
+</html>
